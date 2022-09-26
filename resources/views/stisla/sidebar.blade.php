@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#">Stevan</a>
+            <a href="#">Sistem Asset</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#">ST</a>
+            <a href="#">SA</a>
         </div>
         <ul class="sidebar-menu">
             <li><a class="nav-link @if (Request::is('/home')) active @endif" href="{{ url('home') }}"><i

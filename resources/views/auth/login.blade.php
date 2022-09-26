@@ -35,8 +35,8 @@
                     <div class="p-4 m-3">
                         <img src="{{ asset('assets/img/logolumajang.png') }}" alt="logo" width="200"
                             class="shadow-light rounded-circle mb-5 mt-2">
-                        <h4 class="text-dark font-weight-normal">Welcome to <span
-                                class="font-weight-bold">Project</span>
+                        <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Sistem
+                                Informasi Manajemen Asset</span>
                         </h4>
                         <p class="text-muted">Before you get started, you must login or register if you don't already
                             have an account.</p>
@@ -105,7 +105,8 @@
                         </form>
 
                         <div class="text-center mt-5 text-small">
-                            Copyright &copy; Project Stevan. Made with 💙 by Delsa Alfannia
+                            Copyright &copy; Sistem
+                            Informasi Manajemen Asset. Made with 💙 by Delsa Alfannia
                             <div class="mt-2">
                                 <a href="#">Privacy Policy</a>
                                 <div class="bullet"></div>
@@ -119,7 +120,8 @@
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
-                                <h1 class="mb-2 display-4 font-weight-bold">Project Stevan</h1>
+                                <h1 class="mb-2 display-4 font-weight-bold">Sistem
+                                    Informasi Manajemen Asset</h1>
                                 <h5 class="font-weight-normal text-muted-transparent">Universitas Gajah Mada</h5>
                             </div>
                             Photo by <a class="text-light bb" target="_blank"
