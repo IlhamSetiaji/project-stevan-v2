@@ -35,6 +35,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/{barangID}/update', [BarangController::class, 'updateBarang']);
         Route::get('/{barangID}/delete', [BarangController::class, 'deleteBarang']);
         Route::get('/export', [BarangController::class, 'excel']);
-        Route::get('/references', [BarangController::class, 'references']);
+        Route::get('/references', [BarangController::class, 'referensi']);
     });
 });

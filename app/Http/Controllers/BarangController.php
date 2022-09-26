@@ -120,4 +120,9 @@ class BarangController extends Controller
     {
         return response()->download(public_path('Inventarisasi Aset SIMA v.2.accdb'));
     }
+
+    public function referensi()
+    {
+        return view('reference.index');
+    }
 }
