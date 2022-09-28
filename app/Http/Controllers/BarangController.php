@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\BarangExport;
 use Exception;
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use App\Exports\BarangExport;
 use App\Http\Requests\BarangRequest;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\SearchTahunRequest;
