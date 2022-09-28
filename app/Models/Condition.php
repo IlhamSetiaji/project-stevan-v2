@@ -10,4 +10,9 @@ class Condition extends Model
     use HasFactory;
     protected $table = 'conditions';
     protected $guarded = ['id'];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
 }

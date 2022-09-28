@@ -24,6 +24,10 @@ class BarangRequest extends FormRequest
     public function rules()
     {
         return [
+            'category_id' => 'required',
+            'condition_id' => 'required',
+            'room_id' => 'required',
+            'keterangan_id' => 'required',
             'kode_barang' => 'required|unique:barang,kode_barang',
             'nama_barang' => 'required|string',
             'tahun_perolehan' => 'required',
@@ -32,10 +36,7 @@ class BarangRequest extends FormRequest
             'kuantitas' => 'required|numeric',
             'harga_satuan_barang' => 'required|numeric',
             'harga' => 'required|numeric',
-            'kondisi' => 'required',
             'penggunaan' => 'required',
-            'ruangan' => 'required',
-            'keterangan' => 'required',
             'image' => 'required|max:10240|mimes:png,jpg,jpeg',
         ];
     }

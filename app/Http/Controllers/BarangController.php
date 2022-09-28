@@ -11,18 +11,26 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\SearchTahunRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Http\Requests\SearchRuanganRequest;
+use App\Models\Category;
+use App\Models\Condition;
+use App\Models\Keterangan;
+use App\Models\Room;
 
 class BarangController extends Controller
 {
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::with('categories', 'conditions', 'rooms', 'keterangan')->get();
         return view('barang.index', compact('barang'));
     }
 
     public function create()
     {
-        return view('barang.create');
+        $categories = Category::all();
+        $conditions = Condition::all();
+        $rooms = Room::all();
+        $keterangan = Keterangan::all();
+        return view('barang.create', compact('categories', 'conditions', 'rooms', 'keterangan'));
     }
 
     public function handleUploadImage($request)

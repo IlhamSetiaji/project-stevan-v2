@@ -25,4 +25,24 @@ class Barang extends Model
     //         $model->save();
     //     });
     // }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function conditions()
+    {
+        return $this->belongsTo(Condition::class, 'condition_id');
+    }
+
+    public function rooms()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
+
+    public function keterangan()
+    {
+        return $this->belongsTo(Keterangan::class, 'keterangan_id');
+    }
 }

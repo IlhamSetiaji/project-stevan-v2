@@ -58,6 +58,7 @@
                                             <th>Nama Barang</th>
                                             <th>Tahun Perolehan</th>
                                             <th>NUP</th>
+                                            <th>Kategori</th>
                                             <th>Merk</th>
                                             <th>Kuantitas</th>
                                             <th>Harga Satuan Barang</th>
@@ -86,6 +87,9 @@
                                                     {{ $b->nup }}
                                                 </td>
                                                 <td>
+                                                    {{ $b->categories->name }}
+                                                </td>
+                                                <td>
                                                     {{ $b->merk }}
                                                 </td>
                                                 <td>
@@ -98,16 +102,16 @@
                                                     {{ $b->harga }}
                                                 </td>
                                                 <td>
-                                                    {{ $b->kondisi }}
+                                                    {{ $b->conditions->name }}
                                                 </td>
                                                 <td>
                                                     {{ $b->penggunaan }}
                                                 </td>
                                                 <td>
-                                                    {{ $b->ruangan }}
+                                                    {{ $b->rooms->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $b->keterangan }}
+                                                    {{ $b->keterangan->name }}
                                                 </td>
                                                 <td>
                                                     <img src="{{ asset($b->dokumentasi) }}" alt=""
@@ -124,8 +128,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                        @endforeach
                                     </tbody>
-                                    @endforeach
                                 </table>
                             </div>
                             <!-- This is where your code ends -->

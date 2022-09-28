@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('condition_id')->constrained('conditions')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('room_id')->constrained('rooms')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('keterangan_id')->constrained('keterangan')->cascadeOnDelete()->cascadeOnUpdate();
             $table->char('kode_barang')->unique();
             $table->string('nama_barang');
             $table->year('tahun_perolehan');
@@ -23,10 +27,7 @@ return new class extends Migration
             $table->integer('kuantitas');
             $table->integer('harga_satuan_barang');
             $table->integer('harga');
-            $table->enum('kondisi', ['B', 'RR', 'RB']);
             $table->enum('penggunaan', ['Sendiri', 'Pihak Ketiga']);
-            $table->string('ruangan');
-            $table->text('keterangan');
             $table->string('dokumentasi');
             $table->timestamps();
         });
