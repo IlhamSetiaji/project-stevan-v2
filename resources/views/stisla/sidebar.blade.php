@@ -10,9 +10,9 @@
             <li><a class="nav-link @if (Request::is('/home')) active @endif" href="{{ url('home') }}"><i
                         class="fas fa-columns"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link @if (Request::is('/barang/create')) active @endif" href="{{ url('barang/create') }}"><i
-                        class="fas fa-columns"></i> <span>Input Barang</span></a></li>
+                        class="fas fa-folder-plus"></i> <span>Input Barang</span></a></li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-home"></i> <span>Database</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i> <span>Database</span></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link" href="{{ url('barang/') }}"> <span>Seluruh</span></a>
@@ -26,9 +26,9 @@
                     </li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="{{ url('barang/export') }}"><i class="fas fa-columns"></i>
+            <li><a class="nav-link" href="{{ url('barang/export') }}"><i class="fas fa-print"></i>
                     <span>Laporan</span></a></li>
-            <li><a class="nav-link" href="{{ url('barang/references') }}"><i class="fas fa-columns"></i>
+            <li><a class="nav-link" href="{{ url('barang/references') }}"><i class="fas fa-globe"></i>
                     <span>Referensi</span></a></li>
         </ul>
     </aside>

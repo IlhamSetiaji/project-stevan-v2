@@ -24,6 +24,7 @@
                     <th>Nama Barang</th>
                     <th>Tahun Perolehan</th>
                     <th>NUP</th>
+                    <th>Kategori</th>
                     <th>Merk</th>
                     <th>Kuantitas</th>
                     <th>Harga Satuan Barang</th>
@@ -51,32 +52,35 @@
                             {{ $b->nup }}
                         </td>
                         <td>
+                            {{ $b->categories->name }}
+                        </td>
+                        <td>
                             {{ $b->merk }}
                         </td>
                         <td>
                             {{ $b->kuantitas }}
                         </td>
                         <td>
-                            {{ $b->harga_satuan_barang }}
+                            Rp. {{ number_format($b->harga_satuan_barang) }}
                         </td>
                         <td>
-                            {{ $b->harga }}
+                            Rp. {{ number_format($b->harga) }}
                         </td>
                         <td>
-                            {{ $b->kondisi }}
+                            {{ $b->conditions->name }}
                         </td>
                         <td>
                             {{ $b->penggunaan }}
                         </td>
                         <td>
-                            {{ $b->ruangan }}
+                            {{ $b->rooms->name }}
                         </td>
                         <td>
-                            {{ $b->keterangan }}
+                            {{ $b->keterangan->name }}
                         </td>
-                        <td>
+                        {{-- <td>
                             {{ asset($b->dokumentasi) }}
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>
