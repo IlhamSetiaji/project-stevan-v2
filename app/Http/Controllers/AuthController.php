@@ -20,13 +20,16 @@ class AuthController extends Controller
         $payload = $request->validated();
         $user = User::where('name', $payload['name'])->first();
         if (!$user) {
-            return redirect()->back()->with('error', 'Data user tidak ditemukan');
+            return redirect()->back()->with('status', 'Data user tidak ditemukan');
         }
         if (Hash::check($payload['password'], $user->password)) {
-            Auth::login($user);
-            return redirect('/home');
+            if ($user->tahun === $payload['tahun']) {
+                Auth::login($user);
+                return redirect('/home');
+            }
+            return redirect()->back()->with('status', 'Tahun salah');
         }
-        return redirect()->back()->with('error', 'Password salah');
+        return redirect()->back()->with('status', 'Password salah');
     }
 
     public function logout()

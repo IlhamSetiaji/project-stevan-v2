@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'name' => 'required|string',
             'password' => 'required|min:8',
+            'tahun' => 'required',
         ];
     }
 }
