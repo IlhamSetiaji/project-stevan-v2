@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -36,5 +38,23 @@ class AuthController extends Controller
     {
         Auth::logout(request()->user());
         return redirect('/');
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function postRegister(RegisterRequest $request)
+    {
+        $payload = $request->validated();
+        try {
+            unset($payload['password-confirm']);
+            $payload['password'] = Hash::make($payload['password']);
+            User::create($payload);
+            return redirect('/')->with('status', 'Registrasi akun berhasil, silahkan login');
+        } catch (Exception $e) {
+            return redirect('register')->with('status', $e->getMessage());
+        }
     }
 }

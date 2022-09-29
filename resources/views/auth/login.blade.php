@@ -67,14 +67,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Tahun</label>
-                                <input id="email" type="number" min="1900" class="form-control" name="tahun"
-                                    tabindex="1" value="{{ old('tahun') }}" required autofocus>
-                                @error('tahun')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <label for="name" class="form-label">Tahun</label>
+                                <select name="tahun" id="" class="select2">
+                                    @for ($i = 1901; $i <= 2100; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -90,9 +88,9 @@
                                 Forgot Password?
                                 </a>
                                 @endif --}}
-                                {{-- <a href="{{ url('register') }}" class="float-left mt-3">
+                                <a href="{{ url('register') }}" class="float-left mt-3">
                                     Belum punya akun? Daftar sekarang!
-                                </a> --}}
+                                </a>
                                 <a href="https://wa.me/6281347806381" target="_blank" class="float-left mt-3">
                                     <i class="fas fa-question-circle"></i>
                                     Butuh bantuan? Klik link ini!

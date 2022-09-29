@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Tahun Perolehan</label>
-                                    <input type="number" min="1900" max="2100" class="form-control"
+                                    <input type="number" min="1901" max="2100" class="form-control"
                                         id="name" name="tahun_perolehan" value="{{ $barang->tahun_perolehan }}">
                                 </div>
                                 <div class="form-group">
