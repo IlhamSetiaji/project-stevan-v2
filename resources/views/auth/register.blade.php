@@ -92,6 +92,9 @@
                                         </button>
                                     </div>
                                 </form>
+                                <a href="{{ url('/') }}" class="float-left mt-3">
+                                    Sudah punya akun? Login sekarang!
+                                </a>
                             </div>
                         </div>
                         <div class="simple-footer">
