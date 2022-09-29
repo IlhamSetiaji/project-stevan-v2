@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Barang;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithDrawings;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -33,6 +34,15 @@ class BarangExport extends \PhpOffice\PhpSpreadsheet\Cell\StringValueBinder impl
             array_push($images, $drawing);
         }
         return $images;
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class    => function (AfterSheet $event) {
+                $event->sheet->getDefaultRowDimension()->setRowHeight(40);  // All rows
+            },
+        ];
     }
 
     public function  view(): View

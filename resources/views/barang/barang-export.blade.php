@@ -78,6 +78,7 @@
                         <td>
                             {{ $b->keterangan->name }}
                         </td>
+                        <td style="height: 100px"></td>
                         {{-- <td>
                             {{ asset($b->dokumentasi) }}
                         </td> --}}
