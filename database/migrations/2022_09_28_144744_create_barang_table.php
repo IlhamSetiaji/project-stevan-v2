@@ -30,6 +30,7 @@ return new class extends Migration
             $table->enum('penggunaan', ['Sendiri', 'Pihak Ketiga']);
             $table->string('dokumentasi');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

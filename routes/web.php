@@ -37,5 +37,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/{barangID}/delete', [BarangController::class, 'deleteBarang']);
         Route::get('/export', [BarangController::class, 'excel']);
         Route::get('/references', [BarangController::class, 'referensi']);
+        Route::get('/recycle-bin', [BarangController::class, 'showTrashed']);
+        Route::get('/{barangID}/restore', [BarangController::class, 'restore']);
+        Route::get('/{barangID}/force-delete', [BarangController::class, 'deleteForever']);
     });
 });

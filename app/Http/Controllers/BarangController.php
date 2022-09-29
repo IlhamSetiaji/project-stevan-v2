@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\SearchTahunRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Http\Requests\SearchRuanganRequest;
+use Illuminate\Support\Facades\File;
 
 class BarangController extends Controller
 {
@@ -158,5 +159,40 @@ class BarangController extends Controller
     public function referensi()
     {
         return view('reference.index');
+    }
+
+    public function showTrashed()
+    {
+        $barang = Barang::onlyTrashed()->get();
+        return view('barang.recycle-bin', compact('barang'));
+    }
+
+    public function restore($barangID)
+    {
+        $barang = Barang::onlyTrashed($barangID)->first();
+        if (!$barang) {
+            return redirect()->back()->with('status', 'Barang tidak ditemukan');
+        }
+        try {
+            $barang->restore();
+            return redirect()->back()->with('status', 'Barang berhasil direstore');
+        } catch (Exception $e) {
+            return redirect()->back()->with('status', $e->getMessage());
+        }
+    }
+
+    public function deleteForever($barangID)
+    {
+        $barang = Barang::onlyTrashed($barangID)->first();
+        if (!$barang) {
+            return redirect()->back()->with('status', 'Barang tidak ditemukan');
+        }
+        try {
+            File::delete(public_path($barang->dokumentasi));
+            $barang->forceDelete();
+            return redirect()->back()->with('status', 'Barang berhasil dihapus selamanya');
+        } catch (Exception $e) {
+            return redirect()->back()->with('status', $e->getMessage());
+        }
     }
 }

@@ -30,6 +30,8 @@
                     <span>Laporan</span></a></li>
             <li><a class="nav-link" href="{{ url('barang/references') }}"><i class="fas fa-globe"></i>
                     <span>Referensi</span></a></li>
+            <li><a class="nav-link" href="{{ url('barang/recycle-bin') }}"><i class="fas fa-recycle"></i>
+                    <span>Recycle Bin</span></a></li>
         </ul>
     </aside>
 </div>
