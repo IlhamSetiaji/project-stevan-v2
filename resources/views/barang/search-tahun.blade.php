@@ -50,9 +50,12 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Tahun</label>
-                                    <input type="number" min="1900" max="3000" class="form-control"
-                                        id="name" name="tahun">
+                                    <label for="name" class="form-label">Search by Tahun</label>
+                                    <select name="tahun" id="" class="select2">
+                                        @for ($i = 1900; $i <= 2100; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
                                 </div>
                                 <button type="submit" class="btn btn-info">Search Barang</button>
                             </form>

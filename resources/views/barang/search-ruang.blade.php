@@ -50,8 +50,12 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Ruangan</label>
-                                    <input type="text" class="form-control" id="name" name="ruangan">
+                                    <label for="name" class="form-label">Search by Ruangan</label>
+                                    <select name="ruangan" id="" class="select2">
+                                        @foreach ($rooms as $room)
+                                            <option value="{{ $room->id }}">{{ $room->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <button type="submit" class="btn btn-info">Search Barang</button>
                             </form>

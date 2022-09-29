@@ -81,26 +81,35 @@ class BarangController extends Controller
     public function searchTahunResult(SearchTahunRequest $request)
     {
         $payload = $request->validated();
-        $barang = Barang::where('tahun_perolehan', $payload['tahun'])->get();
+        $barang = Barang::with('categories', 'conditions', 'rooms', 'keterangan')->where('tahun_perolehan', $payload['tahun'])->get();
         if (sizeof($barang) == 0) {
             return redirect()->back()->with('status', 'Data barang berdasarkan tahun tidak ditemukan, silahkan coba lagi');
         }
-        return view('barang.index', compact('barang'));
+        $categories = Category::all();
+        $conditions = Condition::all();
+        $rooms = Room::all();
+        $keterangan = Keterangan::all();
+        return view('barang.index', compact('barang', 'categories', 'conditions', 'rooms', 'keterangan'));
     }
 
     public function searchRuangan()
     {
-        return view('barang.search-ruang');
+        $rooms = Room::all();
+        return view('barang.search-ruang', compact('rooms'));
     }
 
     public function searchRuanganResult(SearchRuanganRequest $request)
     {
         $payload = $request->validated();
-        $barang = Barang::where('ruangan', $payload['ruangan'])->get();
+        $barang = Barang::with('categories', 'conditions', 'rooms', 'keterangan')->where('room_id', $payload['ruangan'])->get();
         if (sizeof($barang) == 0) {
             return redirect()->back()->with('status', 'Data barang berdasarkan ruangan tidak ditemukan, silahkan coba lagi');
         }
-        return view('barang.index', compact('barang'));
+        $categories = Category::all();
+        $conditions = Condition::all();
+        $rooms = Room::all();
+        $keterangan = Keterangan::all();
+        return view('barang.index', compact('barang', 'categories', 'conditions', 'rooms', 'keterangan'));
     }
 
     public function updateBarang(UpdateBarangRequest $request, $barangID)
