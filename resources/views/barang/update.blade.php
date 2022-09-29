@@ -46,57 +46,66 @@
                             Welcome to admin page
                         </p>
                         <div class="container">
-                            <form action="{{ url('barang/create') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('barang/' . $barang->id . '/update') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" class="form-label">Kode Barang</label>
-                                    <input type="text" class="form-control" id="name" name="kode_barang">
+                                    <input type="text" class="form-control" id="name" name="kode_barang"
+                                        value="{{ $barang->kode_barang }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nama Barang</label>
-                                    <input type="text" class="form-control" id="name" name="nama_barang">
+                                    <input type="text" class="form-control" id="name" name="nama_barang"
+                                        value="{{ $barang->nama_barang }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Tahun Perolehan</label>
                                     <input type="number" min="1900" max="2100" class="form-control"
-                                        id="name" name="tahun_perolehan">
+                                        id="name" name="tahun_perolehan" value="{{ $barang->tahun_perolehan }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">NUP</label>
-                                    <input type="text" class="form-control" id="name" name="nup">
+                                    <input type="text" class="form-control" id="name" name="nup"
+                                        value="{{ $barang->nup }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Kategori</label>
                                     <select name="category_id" id="" class="select2">
                                         @foreach ($categories as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $barang->category_id ? 'selected' : '' }}>
+                                                {{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Merk/Type</label>
-                                    <input type="text" class="form-control" id="name" name="merk">
+                                    <input type="text" class="form-control" id="name" name="merk"
+                                        value="{{ $barang->merk }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Kuantitas</label>
                                     <input type="number" min="1" class="form-control" id="kuantitas"
-                                        name="kuantitas" value="">
+                                        name="kuantitas" value="{{ $barang->kuantitas }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Harga Satuan Barang</label>
                                     <input type="number" min="0" class="form-control" id="satuan"
-                                        name="harga_satuan_barang" value="">
+                                        name="harga_satuan_barang" value="{{ $barang->harga_satuan_barang }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Harga</label>
                                     <input type="number" min="0" class="form-control" id="harga"
-                                        name="harga" value="" readonly>
+                                        name="harga" value="{{ $barang->harga }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="name" class="form-label">Kondisi</label>
                                     <select name="condition_id" id="" class="select2">
                                         @foreach ($conditions as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $barang->condition_id ? 'selected' : '' }}>
+                                                {{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,7 +120,9 @@
                                     <label for="name" class="form-label">Ruangan</label>
                                     <select name="room_id" id="" class="select2">
                                         @foreach ($rooms as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $barang->room_id ? 'selected' : '' }}>
+                                                {{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -119,13 +130,19 @@
                                     <label for="name" class="form-label">Keterangan</label>
                                     <select name="keterangan_id" id="" class="select2">
                                         @foreach ($keterangan as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}"
+                                                {{ $item->id == $barang->keterangan_id ? 'selected' : '' }}>
+                                                {{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Gambar Dokumentasi</label>
                                     <input type="file" class="form-control" name="image">
+                                </div>
+                                <div class="form-group">
+                                    <img src="{{ asset($barang->dokumentasi) }}" alt="" width="300"
+                                        height="200">
                                 </div>
                                 <button type="submit" class="btn btn-info">Input Barang</button>
                             </form>

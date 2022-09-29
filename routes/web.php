@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/search-tahun', [BarangController::class, 'searchTahunResult']);
         Route::get('/search-ruang', [BarangController::class, 'searchRuangan']);
         Route::post('/search-ruang', [BarangController::class, 'searchRuanganResult']);
+        Route::get('/{barangID}/update', [BarangController::class, 'showUpdate']);
         Route::post('/{barangID}/update', [BarangController::class, 'updateBarang']);
         Route::get('/{barangID}/delete', [BarangController::class, 'deleteBarang']);
         Route::get('/export', [BarangController::class, 'excel']);

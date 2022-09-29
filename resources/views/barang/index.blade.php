@@ -96,10 +96,10 @@
                                                     {{ $b->kuantitas }}
                                                 </td>
                                                 <td>
-                                                    {{ $b->harga_satuan_barang }}
+                                                    Rp. {{ number_format($b->harga_satuan_barang) }}
                                                 </td>
                                                 <td>
-                                                    {{ $b->harga }}
+                                                    Rp. {{ number_format($b->harga) }}
                                                 </td>
                                                 <td>
                                                     {{ $b->conditions->name }}
@@ -119,12 +119,17 @@
                                                 </td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="#" data-toggle="modal"
+                                                        {{-- <a href="#" data-toggle="modal"
                                                             data-target="#updateData{{ $b->id }}">
                                                             <button type="button" class="btn btn-warning">Edit</button>
-                                                        </a>
+                                                        </a> --}}
+                                                        <a href="{{ url('barang/' . $b->id . '/update') }}"
+                                                            class="btn
+                                                            btn-warning">Edit</a>
                                                         <a href="{{ url('barang/' . $b->id . '/delete') }}"
-                                                            class="btn btn-danger">Delete</a>
+                                                            onClick="return confirm('Hapus barang ini?')"
+                                                            class="btn
+                                                            btn-danger">Delete</a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -144,9 +149,29 @@
             </footer>
         </div>
     </div>
-    @include('barang.modal.update-barang');
+    @include('barang.modal.update-barang')
     {{-- @include('barang.modal.delete-barang'); --}}
     @include('stisla.script')
+    <script>
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+
+            // These options are needed to round to whole numbers if that's what you want.
+            //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+            //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+        });
+        $("#kuantitas, #satuan").keyup(function() {
+            update();
+        });
+
+        function update() {
+            let a = parseFloat($('#kuantitas').val());
+            let b = parseFloat($('#satuan').val());
+            let x = a * b;
+            $("#harga").val(x);
+        }
+    </script>
 </body>
 
 </html>

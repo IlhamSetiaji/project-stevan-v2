@@ -26,6 +26,10 @@ class UpdateBarangRequest extends FormRequest
         $barangID = request('barangID');
         return [
             // 'kode_barang' => 'required|unique:barang,kode_barang,' . $barangID,
+            'category_id' => 'required',
+            'condition_id' => 'required',
+            'room_id' => 'required',
+            'keterangan_id' => 'required',
             'nama_barang' => 'required|string',
             'tahun_perolehan' => 'required',
             'nup' => 'required|string',
@@ -33,10 +37,7 @@ class UpdateBarangRequest extends FormRequest
             'kuantitas' => 'required|numeric',
             'harga_satuan_barang' => 'required|numeric',
             'harga' => 'required|numeric',
-            'kondisi' => 'required',
             'penggunaan' => 'required',
-            'ruangan' => 'required',
-            'keterangan' => 'required',
             'image' => 'nullable|max:10240|mimes:png,jpg,jpeg',
         ];
     }

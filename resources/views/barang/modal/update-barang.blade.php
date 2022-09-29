@@ -33,6 +33,14 @@
                                 value="{{ $p->nup }}">
                         </div>
                         <div class="form-group">
+                            <label for="name" class="form-label">Kategori</label>
+                            <select name="category_id" id="" class="select2">
+                                @foreach ($categories as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="name" class="form-label">Merk/Type</label>
                             <input type="text" class="form-control" id="name" name="merk"
                                 value="{{ $p->merk }}">
@@ -40,24 +48,24 @@
                         <div class="form-group">
                             <label for="name" class="form-label">Kuantitas</label>
                             <input type="number" min="1" class="form-control" id="name" name="kuantitas"
-                                value="{{ $p->kuantitas }}">
+                                id="kuantitas" value="{{ $p->kuantitas }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">Harga Satuan Barang</label>
-                            <input type="number" min="0" class="form-control" id="name"
+                            <input type="number" min="0" class="form-control" id="name" id="satuan"
                                 name="harga_satuan_barang" value="{{ $p->harga_satuan_barang }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">Harga</label>
-                            <input type="number" min="0" class="form-control" id="name" name="harga"
-                                value="{{ $p->harga }}">
+                            <input type="number" min="0" class="form-control" id="harga" name="harga"
+                                id="harga" value="{{ $p->harga }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">Kondisi</label>
-                            <select name="kondisi" id="" class="select2">
-                                <option value="B">B</option>
-                                <option value="R">RR</option>
-                                <option value="RB">RB</option>
+                            <select name="condition_id" id="" class="select2">
+                                @foreach ($conditions as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -69,13 +77,11 @@
                         </div>
                         <div class="form-group">
                             <label for="name" class="form-label">Ruangan</label>
-                            <input type="text" class="form-control" id="name" name="ruangan"
-                                value="{{ $p->ruangan }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control" id="name" name="keterangan"
-                                value="{{ $p->keterangan }}">
+                            <select name="room_id" id="" class="select2">
+                                @foreach ($rooms as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Gambar Dokumentasi</label>

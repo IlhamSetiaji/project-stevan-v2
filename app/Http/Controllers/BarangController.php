@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\Room;
 use App\Models\Barang;
+use App\Models\Category;
+use App\Models\Condition;
+use App\Models\Keterangan;
 use Illuminate\Http\Request;
 use App\Exports\BarangExport;
 use App\Http\Requests\BarangRequest;
@@ -11,17 +15,17 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\SearchTahunRequest;
 use App\Http\Requests\UpdateBarangRequest;
 use App\Http\Requests\SearchRuanganRequest;
-use App\Models\Category;
-use App\Models\Condition;
-use App\Models\Keterangan;
-use App\Models\Room;
 
 class BarangController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
+        $conditions = Condition::all();
+        $rooms = Room::all();
+        $keterangan = Keterangan::all();
         $barang = Barang::with('categories', 'conditions', 'rooms', 'keterangan')->get();
-        return view('barang.index', compact('barang'));
+        return view('barang.index', compact('barang', 'categories', 'conditions', 'rooms', 'keterangan'));
     }
 
     public function create()
@@ -54,6 +58,19 @@ class BarangController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('status', $e->getMessage());
         }
+    }
+
+    public function showUpdate($barangID)
+    {
+        $barang = Barang::find($barangID);
+        if (!$barang) {
+            return redirect()->back()->with('status', 'Barang tidak ditemukan');
+        }
+        $categories = Category::all();
+        $conditions = Condition::all();
+        $rooms = Room::all();
+        $keterangan = Keterangan::all();
+        return view('barang.update', compact('categories', 'conditions', 'rooms', 'keterangan', 'barang'));
     }
 
     public function searchTahun()
