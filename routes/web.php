@@ -3,7 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConditionController;
+use App\Http\Controllers\KeteranganController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,5 +47,41 @@ Route::middleware('auth')->group(function () {
         Route::get('/recycle-bin', [BarangController::class, 'showTrashed']);
         Route::get('/{barangID}/restore', [BarangController::class, 'restore']);
         Route::get('/{barangID}/force-delete', [BarangController::class, 'deleteForever']);
+    });
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::post('/', [CategoryController::class, 'create']);
+        Route::post('/{categoryID}/update', [CategoryController::class, 'update']);
+        Route::get('/{categoryID}/delete', [CategoryController::class, 'delete']);
+        Route::get('/recycle-bin', [CategoryController::class, 'showTrashed']);
+        Route::get('/{categoryID}/restore', [CategoryController::class, 'restore']);
+        Route::get('/{categoryID}/force-delete', [CategoryController::class, 'forceDelete']);
+    });
+    Route::prefix('conditions')->group(function () {
+        Route::get('/', [ConditionController::class, 'index']);
+        Route::post('/', [ConditionController::class, 'create']);
+        Route::post('/{conditionID}/update', [ConditionController::class, 'update']);
+        Route::get('/{conditionID}/delete', [ConditionController::class, 'delete']);
+        Route::get('/recycle-bin', [ConditionController::class, 'showTrashed']);
+        Route::get('/{conditionID}/restore', [ConditionController::class, 'restore']);
+        Route::get('/{conditionID}/force-delete', [ConditionController::class, 'forceDelete']);
+    });
+    Route::prefix('rooms')->group(function () {
+        Route::get('/', [RoomController::class, 'index']);
+        Route::post('/', [RoomController::class, 'create']);
+        Route::post('/{roomID}/update', [RoomController::class, 'update']);
+        Route::get('/{roomID}/delete', [RoomController::class, 'delete']);
+        Route::get('/recycle-bin', [RoomController::class, 'showTrashed']);
+        Route::get('/{roomID}/restore', [RoomController::class, 'restore']);
+        Route::get('/{roomID}/force-delete', [RoomController::class, 'forceDelete']);
+    });
+    Route::prefix('keterangan')->group(function () {
+        Route::get('/', [KeteranganController::class, 'index']);
+        Route::post('/', [KeteranganController::class, 'create']);
+        Route::post('/{keteranganID}/update', [KeteranganController::class, 'update']);
+        Route::get('/{keteranganID}/delete', [KeteranganController::class, 'delete']);
+        Route::get('/recycle-bin', [KeteranganController::class, 'showTrashed']);
+        Route::get('/{keteranganID}/restore', [KeteranganController::class, 'restore']);
+        Route::get('/{keteranganID}/force-delete', [KeteranganController::class, 'forceDelete']);
     });
 });

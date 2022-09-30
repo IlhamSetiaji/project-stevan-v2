@@ -30,8 +30,45 @@
                     <span>Laporan</span></a></li>
             <li><a class="nav-link" href="{{ url('barang/references') }}"><i class="fas fa-globe"></i>
                     <span>Referensi</span></a></li>
-            <li><a class="nav-link" href="{{ url('barang/recycle-bin') }}"><i class="fas fa-recycle"></i>
-                    <span>Recycle Bin</span></a></li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-server"></i> <span>Referensi
+                        V2</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ url('categories/') }}"> <span>Kategori</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('conditions/') }}"> <span>Kondisi</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('rooms/') }}"> <span>Ruangan</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('keterangan/') }}"> <span>Keterangan</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-recycle"></i> <span>Recycle
+                        Bin</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ url('barang/recycle-bin') }}"> <span>Barang</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('categories/recycle-bin') }}"> <span>Kategori</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('conditions/recycle-bin') }}"> <span>Kondisi</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('rooms/recycle-bin') }}"> <span>Ruangan</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ url('keterangan/recycle-bin') }}"> <span>Keterangan</span></a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>
